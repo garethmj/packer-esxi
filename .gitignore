@@ -4,3 +4,4 @@ packer_cache
 *.box
 .vagrant
 version.txt
+.Ulysses*

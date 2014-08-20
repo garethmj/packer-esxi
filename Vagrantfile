@@ -1,4 +1,5 @@
-Vagrant.require_plugin "vagrant-esxi"
+# Vagrant.require_plugin "vagrant-esxi"
+
 
 File.open("version.txt", 'w') do |f|
   f.write(Vagrant::VERSION)
@@ -9,15 +10,31 @@ Vagrant.configure("2") do |config|
   config.ssh.shell = "sh"
 
   config.vm.hostname = "vagrantbox"
-  config.vm.box = "vmware_esxi55"
-  config.vm.box_url = "./vmware_esxi55.box"
   config.vm.synced_folder ".", "/vagrant", nfs: true
 
-  [:vmware_fusion, :vmware_workstation].each do |name|
+  [:vmware_workstation, :vmware_fusion].each do |name|
     config.vm.provider name do |v,override|
-      v.vmx["memsize"] = "4096"
+      
+      config.vm.provision "shell", inline: "echo Using VMware provisioner"
+      config.vm.box = "vmware_esxi55"
+      config.vm.box_url = "./vmware_esxi55.box"
+      v.gui = true
+      v.vmx["memsize"] = "8192"
+      v.vmx["numvcpus"] = "4"
     end
+  end
+    
+  [:virtualbox].each do |name|
+    config.vm.provider name do |v,override|
+      config.vm.provision "shell", inline: "echo Using VirtualBox provisioner"
+      config.vm.box = "virtualbox_esxi55.box"
+      config.vm.box_url = "./virtualbox_esxi55.box"
+      v.gui = true
+#     v.vmx["memsize"] = "8192"
+#     v.vmx["numvcpus"] = "4"
+    end  
   end
 
   config.vm.provision "shell", privileged: false, path: "provision.sh"
+  config.vm.provision "shell", inline: "echo Configuration complete"
 end
