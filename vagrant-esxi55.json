@@ -31,44 +31,6 @@
                 "numvcpus": "4",
                 "vhv.enable": "TRUE"
             }
-        },
-        {
-            "boot_command": [
-                "O<wait>",
-                " ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
-            ],
-            "boot_wait": "15s",
-            "disk_size": 750000,
-            "guest_additions_mode": "disable",
-            "guest_os_type": "Linux_64",
-            "headless": false,
-            "http_directory": "http",
-            "iso_checksum": "36dfcb269a20d7bfe7323f825128e1a8",
-            "iso_checksum_type": "md5",
-            "iso_urls": [
-                "http://s3.amazonaws.com/pse-boxes/VMware-VMvisor-Installer-5.5.0.update01-1623387.x86_64.iso"
-            ],
-            "shutdown_command": "/bin/halt",
-            "ssh_password": "vagrant",
-            "ssh_port": 22,
-            "ssh_username": "root",
-            "ssh_wait_timeout": "20m",
-            "type": "virtualbox-iso",
-            "vboxmanage": [
-                [
-                    "modifyvm",
-                    "{{.Name}}",
-                    "--memory",
-                    "4096"
-                ],
-                [
-                    "modifyvm",
-                    "{{.Name}}",
-                    "--cpus",
-                    "4"
-                ]
-            ],
-            "vm_name": "esxi55"
         }
     ],
     "post-processors": [
