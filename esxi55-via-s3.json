@@ -1,24 +1,6 @@
 {
     "builders": [
         {
-            "boot_wait": "15s",
-            "headless": false,
-            "shutdown_command": "/bin/halt",
-            "source_path": "./pcf-exsi55.vmx",
-            "ssh_password": "virtualize",
-            "ssh_username": "root",
-            "ssh_wait_timeout": "3m",
-            "type": "vmware-vmx",
-            "vm_name": "esxi55-pcf",
-            "vmx_data": {
-                "RemoteDisplay.vnc.webSocket.port": "5900",
-                "cpuid.coresPerSocket": "2",
-                "memsize": "4096",
-                "numvcpus": "4",
-                "vhv.enable": "TRUE"
-            }
-        },
-        {
             "boot_command": [
                 "O<wait>",
                 " ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
@@ -32,7 +14,7 @@
             "iso_checksum": "36dfcb269a20d7bfe7323f825128e1a8",
             "iso_checksum_type": "md5",
             "iso_urls": [ 
-                "./VMware-VMvisor-Installer-5.5.0.update01-1623387.x86_64.iso"
+                "http://s3.amazonaws.com/pse-boxes/VMware-VMvisor-Installer-5.5.0.update01-1623387.x86_64.iso"
             ],
             "shutdown_command": "/bin/halt",
             "ssh_password": "vagrant",
@@ -43,7 +25,7 @@
             "vm_name": "esxi55",
             "vmdk_name": "esxi55",
             "vmx_data": {
-                "RemoteDisplay.vnc.webSocket.port": "5900",
+                "RemoteDisplay.vnc.webSocket.port": "6550",
                 "cpuid.coresPerSocket": "2",
                 "memsize": "4096",
                 "numvcpus": "4",
@@ -64,7 +46,7 @@
             "iso_checksum": "36dfcb269a20d7bfe7323f825128e1a8",
             "iso_checksum_type": "md5",
             "iso_urls": [
-                "./VMware-VMvisor-Installer-5.5.0.update01-1623387.x86_64.iso"
+                "http://s3.amazonaws.com/pse-boxes/VMware-VMvisor-Installer-5.5.0.update01-1623387.x86_64.iso"
             ],
             "shutdown_command": "/bin/halt",
             "ssh_password": "vagrant",
