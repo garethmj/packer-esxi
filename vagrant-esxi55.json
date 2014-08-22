@@ -1,4 +1,9 @@
 {
+  "variables": {
+      "memsize": "65536",
+      "numvcpus": "12",
+      "cpucores": "6"
+    },
     "builders": [
         {
             "boot_command": [
@@ -25,10 +30,10 @@
             "vm_name": "esxi55",
             "vmdk_name": "esxi55",
             "vmx_data": {
-                "RemoteDisplay.vnc.webSocket.port": "6550",
-                "cpuid.coresPerSocket": "2",
-                "memsize": "4096",
-                "numvcpus": "4",
+                "RemoteDisplay.vnc.webSocket.port": "5900",
+                "cpuid.coresPerSocket": "{{user 'cpucores'}}",
+                "memsize": "{{user 'memsize'}}",
+                "numvcpus": "{{user 'numvcpus'}}",
                 "vhv.enable": "TRUE"
             }
         }
