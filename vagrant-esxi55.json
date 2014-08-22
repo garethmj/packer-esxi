@@ -31,9 +31,9 @@
             "vmdk_name": "esxi55",
             "vmx_data": {
                 "RemoteDisplay.vnc.webSocket.port": "5900",
-                "cpuid.coresPerSocket": "{{user 'cpucores'}}",
-                "memsize": "{{user 'memsize'}}",
-                "numvcpus": "{{user 'numvcpus'}}",
+                "cpuid.coresPerSocket": "{{user `cpucores`}}",
+                "memsize": "{{user `memsize`}}",
+                "numvcpus": "{{user `numvcpus`}}",
                 "vhv.enable": "TRUE"
             }
         }
