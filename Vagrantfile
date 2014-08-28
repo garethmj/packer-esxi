@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
       v.gui = true
       v.vmx["memsize"] = "65536"
       v.vmx["numvcpus"] = "12"
+      v.vmx["cpuid.coresPerSocket"] = "6"
     end
   end
 
